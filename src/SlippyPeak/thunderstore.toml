@@ -7,8 +7,8 @@ repository = "https://thunderstore.io"
 [package]
 namespace = "rushork_games"
 name = "SlippyPeak"
-description = "TODO: Fill in short mod description."
-websiteUrl = "" # TODO: Add a link to your mod repository here (optional)
+description = "A mod that makes you slip!"
+websiteUrl = "https://github.com/rushork/slippy_peak"
 containsNsfwContent = false
 
 [package.dependencies]
