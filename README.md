@@ -16,6 +16,4 @@ https://github.com/rushork/slippy_peak
 - ChatGPT for advice with building the class structure
 - https://github.com/icsharpcode/ILSpy/releases to figure out how peak works :grin: 
 - https://www.imdb.com/title/tt37472799/ for the icon
-
-## Disclaimer:
-- Not sure how well it works in multiplayer.
+- @glarmer for assistance with getting it to work on multiplayer

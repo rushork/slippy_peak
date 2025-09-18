@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -43,20 +44,15 @@ namespace SlippyPeak
         {
             Log.LogInfo($"Slipping local player!");
 
-            player.RPCA_Fall(2f);
-
-            Rigidbody footR = player.GetBodypartRig(BodypartType.Foot_R);
-            Rigidbody footL = player.GetBodypartRig(BodypartType.Foot_L);
-            Rigidbody hip   = player.GetBodypartRig(BodypartType.Hip);
-            Rigidbody head  = player.GetBodypartRig(BodypartType.Head);
+            player.refs.view.RPC("RPCA_Fall", RpcTarget.All, 2f);
 
             Vector3 dir = player.data.lookDirection_Flat;
 
-            footR.AddForce((dir + Vector3.up) * 200f, ForceMode.Impulse);
-            footL.AddForce((dir + Vector3.up) * 200f, ForceMode.Impulse);
-            hip.AddForce(Vector3.up * 1500f, ForceMode.Impulse);
-            head.AddForce(dir * -300f, ForceMode.Impulse);
-
+            player.refs.view.RPC("RPCA_AddForceToBodyPart", RpcTarget.All, BodypartType.Foot_R, (dir + Vector3.up) * 200f, Vector3.zero);
+            player.refs.view.RPC("RPCA_AddForceToBodyPart", RpcTarget.All, BodypartType.Foot_L, (dir + Vector3.up) * 200f, Vector3.zero);
+            player.refs.view.RPC("RPCA_AddForceToBodyPart", RpcTarget.All, BodypartType.Hip, Vector3.up * 1500f, Vector3.zero);
+            player.refs.view.RPC("RPCA_AddForceToBodyPart", RpcTarget.All, BodypartType.Head, dir * -300f, Vector3.zero);
+    
         }
     }
 }
